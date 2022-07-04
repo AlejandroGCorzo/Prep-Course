@@ -10,6 +10,11 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  array=[];
+  for (property in objeto){
+    array.push([property, objeto[property]])
+  }
+  return array;
 }
 
 
@@ -18,6 +23,34 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  arrayletras = [];
+  arrayconteo = [];
+  objeto = {};
+  for (let i = 0; i < string.length; i++) {
+    breakout = false; 
+    for (let k = 0; k < arrayletras.length; k++) {
+      if (string[i] === arrayletras[k]){
+        breakout=true;
+        continue;
+      }
+    } 
+    if(breakout === true)continue;
+    arrayletras.push(string[i]);
+  }
+  arrayletras.sort();
+  for (let i = 0; i < arrayletras.length; i++){
+    sumaletras = 0;
+    for (let k = 0; k < string.length; k++){
+      if (arrayletras[i]===string[k]) sumaletras+=1;
+    }
+    arrayconteo.push(sumaletras);
+  }
+  for (let i = 0; i < arrayletras.length; i++){
+    keyy=arrayletras[i];
+    valuee=arrayconteo[i];
+    objeto[keyy]= valuee;
+  }
+  return objeto;
 }
 
 
@@ -26,6 +59,20 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  nuevoorden = "";
+  function esMayus(letra){
+    return letra === letra.toUpperCase();
+  }
+  function esMinus(letra){
+    return letra === letra.toLowerCase();
+  }   
+  for (let i = 0; i < s.length; i++) {
+    if(esMayus(s[i])) nuevoorden = nuevoorden + s[i];    
+  }
+  for (let i = 0; i < s.length; i++) {
+    if(esMinus(s[i])) nuevoorden = nuevoorden + s[i];    
+  }
+  return nuevoorden;
 }
 
 
@@ -35,6 +82,18 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+  strNueva = "";
+  for (let i = 0; i <= str.length; i++){
+    if(str[i]=== " "|| i === str.length){
+      for (let k = i-1 ; k >= 0; k--){
+    	  if(str[k] === " ") break;
+        else strNueva += str[k];
+      }
+      if(i===str.length) break;
+      strNueva += " ";
+    }
+  }
+  return strNueva;
 } 
 
 
@@ -43,6 +102,7 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  
 }
 
 
