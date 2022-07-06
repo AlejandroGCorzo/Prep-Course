@@ -102,7 +102,13 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
-  
+  numeroStr = numero.toString();
+  numeroStrInverted= "";
+  for (let i = numeroStr.length-1; i >= 0; i--) {
+	  numeroStrInverted = numeroStrInverted + numeroStr[i];
+  }
+  if (numeroStrInverted === numeroStr) return "Es capicua";
+  if (numeroStrInverted !== numeroStr) return "No es capicua";
 }
 
 
@@ -110,6 +116,13 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  array = "";
+  for (let i = 0; i < cadena.length; i++) {
+    if (cadena[i] === "a" || cadena[i] === "b" || cadena[i] === "c") continue;
+    else array = array + cadena[i];    
+  }
+  return array;
+
 }
 
 
@@ -117,6 +130,18 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  newArr = [],
+  newNum = [];
+  largerWord = arr.length;
+  for (let i = 0; i < arr.length; i++){
+	  if(arr[i].length> largerWord) largerWord = arr[i].length;
+  }
+  for (let k = 0; k <= largerWord; k++){
+    for (let i = 0; i < arr.length; i++){
+      if(arr[i].length === k) newArr.push(arr[i]);
+    }
+  }
+  return newArr;
 }
 
 
@@ -126,6 +151,13 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  newArray=[]
+  for (let i = 0; i < arreglo1.length; i++){
+    for (let k = 0; k < arreglo2.length; k++){
+      if (arreglo1[i] === arreglo2[k]) newArray.push(arreglo2[k]);
+    }
+  }
+  return newArray;
 }
 
 
